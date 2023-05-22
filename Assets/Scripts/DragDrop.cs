@@ -8,18 +8,19 @@ public class DragDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Transform position: " + transform.position);
-        Debug.Log("Vector3 mouseScreenPos = Input.mousePosition: " + Input.mousePosition);
-        Debug.Log("Camera.main.WorldToScreenPoint(transform.position): " + Camera.main.WorldToScreenPoint(transform.position));
-        Debug.Log("mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z " + Camera.main.WorldToScreenPoint(transform.position).z);
+        //Debug.Log("Transform position: " + transform.position);
+        //Debug.Log("Vector3 mouseScreenPos = Input.mousePosition: " + Input.mousePosition);
+        //Debug.Log("Camera.main.WorldToScreenPoint(transform.position): " + Camera.main.WorldToScreenPoint(transform.position));
+        //Debug.Log("mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z " + Camera.main.WorldToScreenPoint(transform.position).z);
         Vector3 mouseScreenPos = Input.mousePosition;
         mouseScreenPos.z = Camera.main.WorldToScreenPoint(transform.position).z;
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPos);
-        Debug.Log("mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPos): " + mouseWorldPosition);
+        //Debug.Log("mouseWorldPosition = Camera.main.ScreenToWorldPoint(mouseScreenPos): " + mouseWorldPosition);
         offsetFromCenterOfObject = transform.position - MouseWorldPosition();
-        Debug.Log("offset = transform.position - mouseWorldPosition:" + offsetFromCenterOfObject);
+        //Debug.Log("offset = transform.position - mouseWorldPosition:" + offsetFromCenterOfObject);
 
         transform.GetComponent<Collider>().enabled = false;
+        this.enabled = false;
     }
 
     private void Update()
@@ -48,6 +49,7 @@ public class DragDrop : MonoBehaviour
             }
         }
         transform.GetComponent<Collider>().enabled = true;
+        //this.enabled = false;
     }
 
     private Vector3 MouseWorldPosition()
